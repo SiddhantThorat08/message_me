@@ -1,22 +1,23 @@
 <div class="ui large inverted menu">
     <div class = "ui container">
-        <a class="item">
-            Home
-        </a>
+        <%= link_to 'Chatroom', root_path,class: "item" %>
         <a class="item">
             Messages
         </a>
         <div class="right menu">
+           <% if logged_in? %>
+               <%= link_to "Logout", logout_path, method: :delete, class: "item" %>
+            <%else%>
+            
+                <%= link_to 'LogIn', login_path, class: "ui primary button" %>
+            
+            <%end%>
+            <% if !logged_in? %>
            
-            <div class="item">
-                <div class="ui primary button">Log In</div>
-            </div>
-            <div class="item">
-                <div class="ui primary button">Log out</div>
-            </div>
-            <div class="item">
                 <div class="ui primary button">Sign Up</div>
-            </div>
+            
+            <%end%>
+
         </div>
     </div>
 </div>
